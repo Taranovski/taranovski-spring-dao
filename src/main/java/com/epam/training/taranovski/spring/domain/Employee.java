@@ -1,4 +1,4 @@
-package com.epam.training.taranovski.spring.dao.domain;
+package com.epam.training.taranovski.spring.domain;
 
 
 /**
