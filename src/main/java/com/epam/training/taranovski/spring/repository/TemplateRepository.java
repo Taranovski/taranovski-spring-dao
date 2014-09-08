@@ -5,14 +5,22 @@
  */
 package com.epam.training.taranovski.spring.repository;
 
-import com.epam.training.taranovski.spring.domain.Admin;
+import java.util.List;
 
 /**
  *
- * @author Oleksandr_Taranovsky
+ * @author Alyx
+ * @param <T>
  */
-public interface AdminRepository extends TemplateRepository<Admin> {
+public interface TemplateRepository<T> {
 
-    Admin getByName(String name);
+    T getById(int id);
 
+    List<T> getAll();
+
+    boolean create(T admin);
+
+    boolean update(T admin);
+
+    boolean delete(T admin);
 }

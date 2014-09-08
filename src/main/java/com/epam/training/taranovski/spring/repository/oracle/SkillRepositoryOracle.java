@@ -5,8 +5,8 @@
  */
 package com.epam.training.taranovski.spring.repository.oracle;
 
-import com.epam.training.taranovski.spring.domain.Admin;
-import com.epam.training.taranovski.spring.repository.AdminRepository;
+import com.epam.training.taranovski.spring.domain.Skill;
+import com.epam.training.taranovski.spring.repository.SkillRepository;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Repository;
  *
  * @author Alyx
  */
-@Repository("adminRepository")
-public class AdminRepositoryOracle implements AdminRepository {
+@Repository("skillRepository")
+public class SkillRepositoryOracle implements SkillRepository {
 
     private DataSource ds;
 
@@ -26,7 +26,7 @@ public class AdminRepositoryOracle implements AdminRepository {
      * @param ds
      */
     @Autowired
-    public AdminRepositoryOracle(DataSource ds) {
+    public SkillRepositoryOracle(DataSource ds) {
         this.ds = ds;
     }
 
@@ -36,7 +36,7 @@ public class AdminRepositoryOracle implements AdminRepository {
      * @return
      */
     @Override
-    public Admin getById(int id) {
+    public Skill getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -45,47 +45,37 @@ public class AdminRepositoryOracle implements AdminRepository {
      * @return
      */
     @Override
-    public List<Admin> getAll() {
+    public List<Skill> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param name
+     * @param skill
      * @return
      */
     @Override
-    public Admin getByName(String name) {
+    public boolean create(Skill skill) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param admin
+     * @param skill
      * @return
      */
     @Override
-    public boolean create(Admin admin) {
+    public boolean update(Skill skill) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param admin
+     * @param skill
      * @return
      */
     @Override
-    public boolean update(Admin admin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param admin
-     * @return
-     */
-    @Override
-    public boolean delete(Admin admin) {
+    public boolean delete(Skill skill) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

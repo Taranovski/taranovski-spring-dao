@@ -36,6 +36,7 @@ public class Vacancy {
     public java.util.Collection<Skill> skill;
 
     /**
+     * @return 
      * @pdOid 4af9a3b6-3e87-4cdc-b8b0-50df33aa56d3
      */
     public java.lang.String getPosition() {
@@ -51,6 +52,7 @@ public class Vacancy {
     }
 
     /**
+     * @return 
      * @pdOid c9781487-204e-4a23-bf24-ac93eedc9f57
      */
     public double getSalary() {
@@ -66,6 +68,7 @@ public class Vacancy {
     }
 
     /**
+     * @return 
      * @pdOid 391b3a6b-bc62-46f4-b075-4f17c6b49812
      */
     public java.lang.String getDescription() {
@@ -81,6 +84,7 @@ public class Vacancy {
     }
 
     /**
+     * @return 
      * @pdOid 73446bdd-d527-4dc1-a857-9bc758ccb5f4
      */
     public int getVacancyId() {
@@ -96,21 +100,23 @@ public class Vacancy {
     }
 
     /**
+     * @return 
      * @pdGenerated default getter
      */
     public java.util.Collection<Skill> getSkill() {
         if (skill == null) {
-            skill = new java.util.HashSet<Skill>();
+            skill = new java.util.HashSet<>();
         }
         return skill;
     }
 
     /**
-     * @pdGenerated default iterator getter
+     * @pdGe
+     * @return nerated default iterator getter
      */
     public java.util.Iterator getIteratorSkill() {
         if (skill == null) {
-            skill = new java.util.HashSet<Skill>();
+            skill = new java.util.HashSet<>();
         }
         return skill.iterator();
     }
@@ -135,7 +141,7 @@ public class Vacancy {
             return;
         }
         if (this.skill == null) {
-            this.skill = new java.util.HashSet<Skill>();
+            this.skill = new java.util.HashSet<>();
         }
         if (!this.skill.contains(newSkill)) {
             this.skill.add(newSkill);

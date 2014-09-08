@@ -30,6 +30,7 @@ public class Skill {
     private int skillId;
 
     /**
+     * @return 
      * @pdOid 82d904c5-6072-46cc-aa04-15f6118c5bb9
      */
     public java.lang.String getSkillName() {
@@ -45,6 +46,7 @@ public class Skill {
     }
 
     /**
+     * @return 
      * @pdOid 4aa61571-239e-4b4b-9f03-685d629a7c81
      */
     public java.lang.String getDescription() {
@@ -60,6 +62,7 @@ public class Skill {
     }
 
     /**
+     * @return 
      * @pdOid 4627a300-f57d-4a01-954f-3d30487b3881
      */
     public int getExperience() {
@@ -75,6 +78,7 @@ public class Skill {
     }
 
     /**
+     * @return 
      * @pdOid f76dc1e4-0bc8-4ff4-bf4d-613963146a2a
      */
     public int getSkillId() {

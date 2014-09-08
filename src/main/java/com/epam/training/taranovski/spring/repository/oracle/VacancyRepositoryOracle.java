@@ -5,10 +5,9 @@
  */
 package com.epam.training.taranovski.spring.repository.oracle;
 
-import com.epam.training.taranovski.spring.domain.CheckDocument;
-import com.epam.training.taranovski.spring.domain.Employee;
 import com.epam.training.taranovski.spring.domain.Skill;
-import com.epam.training.taranovski.spring.repository.EmployeeRepository;
+import com.epam.training.taranovski.spring.domain.Vacancy;
+import com.epam.training.taranovski.spring.repository.VacancyRepository;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,8 @@ import org.springframework.stereotype.Repository;
  *
  * @author Alyx
  */
-@Repository("employeeRepository")
-public class EmployeeRepositoryOracle implements EmployeeRepository {
+@Repository("vacancyRepository")
+public class VacancyRepositoryOracle implements VacancyRepository {
 
     private DataSource ds;
 
@@ -28,8 +27,50 @@ public class EmployeeRepositoryOracle implements EmployeeRepository {
      * @param ds
      */
     @Autowired
-    public EmployeeRepositoryOracle(DataSource ds) {
+    public VacancyRepositoryOracle(DataSource ds) {
         this.ds = ds;
+    }
+
+    /**
+     *
+     * @param vacancy
+     * @param skill
+     * @return
+     */
+    @Override
+    public boolean addSkill(Vacancy vacancy, Skill skill) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     *
+     * @param vacancy
+     * @param skill
+     * @return
+     */
+    @Override
+    public boolean removeSkill(Vacancy vacancy, Skill skill) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     *
+     * @param vacancy
+     * @return
+     */
+    @Override
+    public boolean clearSkills(Vacancy vacancy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     *
+     * @param vacancy
+     * @return
+     */
+    @Override
+    public List<Skill> getSkills(Vacancy vacancy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -38,7 +79,7 @@ public class EmployeeRepositoryOracle implements EmployeeRepository {
      * @return
      */
     @Override
-    public Employee getById(int id) {
+    public Vacancy getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -47,101 +88,37 @@ public class EmployeeRepositoryOracle implements EmployeeRepository {
      * @return
      */
     @Override
-    public List<Employee> getAll() {
+    public List<Vacancy> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param employee
+     * @param admin
      * @return
      */
     @Override
-    public boolean create(Employee employee) {
+    public boolean create(Vacancy admin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param employee
+     * @param admin
      * @return
      */
     @Override
-    public boolean update(Employee employee) {
+    public boolean update(Vacancy admin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      *
-     * @param employee
+     * @param admin
      * @return
      */
     @Override
-    public boolean delete(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param employee
-     * @param skill
-     * @return
-     */
-    @Override
-    public boolean addSkill(Employee employee, Skill skill) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param employee
-     * @param skill
-     * @return
-     */
-    @Override
-    public boolean removeSkill(Employee employee, Skill skill) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param employee
-     * @return
-     */
-    @Override
-    public boolean clearSkills(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param employee
-     * @return
-     */
-    @Override
-    public List<Skill> getSkills(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param employee
-     * @return
-     */
-    @Override
-    public CheckDocument getCheckDocument(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param firstName
-     * @param lastName
-     * @param patronymic
-     * @return
-     */
-    @Override
-    public Employee getByCredentials(String firstName, String lastName, String patronymic) {
+    public boolean delete(Vacancy admin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

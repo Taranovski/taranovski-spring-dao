@@ -3,13 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.epam.training.taranovski.spring.repository;
+
+import com.epam.training.taranovski.spring.domain.Skill;
+import com.epam.training.taranovski.spring.domain.Vacancy;
+import java.util.List;
 
 /**
  *
  * @author Oleksandr_Taranovsky
  */
-public interface VacancyRepository {
-    
+public interface VacancyRepository extends TemplateRepository<Vacancy> {
+
+    boolean addSkill(Vacancy vacancy, Skill skill);
+
+    boolean removeSkill(Vacancy vacancy, Skill skill);
+
+    boolean clearSkills(Vacancy vacancy);
+
+    List<Skill> getSkills(Vacancy vacancy);
 }

@@ -14,19 +14,9 @@ import java.util.List;
  *
  * @author Oleksandr_Taranovsky
  */
-public interface EmployeeRepository {
-
-    Employee getById(int id);
+public interface EmployeeRepository extends TemplateRepository<Employee> {
 
     Employee getByCredentials(String firstName, String lastName, String patronymic);
-
-    List<Employee> getAll();
-
-    boolean create(Employee employee);
-
-    boolean update(Employee employee);
-
-    boolean delete(Employee employee);
 
     boolean addSkill(Employee employee, Skill skill);
 

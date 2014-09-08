@@ -6,28 +6,17 @@
 package com.epam.training.taranovski.spring.repository;
 
 import com.epam.training.taranovski.spring.domain.User;
-import java.util.List;
 
 /**
  *
  * @author Oleksandr_Taranovsky
  */
-public interface UserRepository {
-
-    User getById(int id);
+public interface UserRepository extends TemplateRepository<User> {
 
     User getByName(String name);
-
-    List<User> getAll();
 
     String getTypeOf(int id);
 
     boolean validate(User user);
-
-    boolean create(User user);
-
-    boolean update(User user);
-
-    boolean delete(User user);
 
 }

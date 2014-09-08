@@ -14,17 +14,7 @@ import java.util.List;
  *
  * @author Oleksandr_Taranovsky
  */
-public interface EmployerRepository {
-
-    Employer getById(int id);
-
-    List<Employer> getAll();
-
-    boolean create(Employer employer);
-
-    boolean update(Employer employer);
-
-    boolean delete(Employer employer);
+public interface EmployerRepository extends TemplateRepository<Employer> {
 
     boolean addVacancy(Employer employer, Vacancy vacancy);
 
