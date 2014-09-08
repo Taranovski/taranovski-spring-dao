@@ -1,12 +1,10 @@
 package com.epam.training.taranovski.spring.domain;
 
-
 /**
  * *********************************************************************
  * Module: Employee.java Author: Alyx Purpose: Defines the Class Employee
- **********************************************************************
+ * *********************************************************************
  */
-
 import java.util.*;
 
 /**
@@ -46,6 +44,7 @@ public class Employee {
     public java.util.Collection<Skill> skill;
 
     /**
+     * @return 
      * @pdOid c56f8431-7128-41c5-a203-346f1d3c74db
      */
     public java.lang.String getName() {
@@ -61,6 +60,7 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdOid dce9d058-53e5-4b35-91dd-d98bbc642b38
      */
     public java.lang.String getSurname() {
@@ -76,6 +76,7 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdOid 22f5701d-45f1-4c69-be87-e465d98a2e64
      */
     public java.lang.String getPatronymic() {
@@ -91,6 +92,7 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdOid 6321e4a9-1e61-4337-af84-4bcb400a2a71
      */
     public java.lang.String getQualification() {
@@ -106,6 +108,7 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdOid da9f6858-77b4-4333-a6ea-bebe0237f652
      */
     public java.lang.String getOccupation() {
@@ -121,6 +124,7 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdOid 6d99daab-fd17-4253-8e5d-f1b13158bb65
      */
     public int getEmployeeId() {
@@ -136,21 +140,23 @@ public class Employee {
     }
 
     /**
+     * @return 
      * @pdGenerated default getter
      */
     public java.util.Collection<Skill> getSkill() {
         if (skill == null) {
-            skill = new java.util.HashSet<Skill>();
+            skill = new java.util.HashSet<>();
         }
         return skill;
     }
 
     /**
-     * @pdGenerated default iterator getter
+     * @pdGe
+     * @return nerated default iterator getter
      */
     public java.util.Iterator getIteratorSkill() {
         if (skill == null) {
-            skill = new java.util.HashSet<Skill>();
+            skill = new java.util.HashSet<>();
         }
         return skill.iterator();
     }
@@ -175,7 +181,7 @@ public class Employee {
             return;
         }
         if (this.skill == null) {
-            this.skill = new java.util.HashSet<Skill>();
+            this.skill = new java.util.HashSet<>();
         }
         if (!this.skill.contains(newSkill)) {
             this.skill.add(newSkill);
@@ -204,6 +210,55 @@ public class Employee {
         if (skill != null) {
             skill.clear();
         }
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.surname);
+        hash = 89 * hash + Objects.hashCode(this.patronymic);
+        hash = 89 * hash + Objects.hashCode(this.qualification);
+        hash = 89 * hash + Objects.hashCode(this.occupation);
+        return hash;
+    }
+
+    /**
+     *
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employee other = (Employee) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.surname, other.surname)) {
+            return false;
+        }
+        if (!Objects.equals(this.patronymic, other.patronymic)) {
+            return false;
+        }
+        if (!Objects.equals(this.qualification, other.qualification)) {
+            return false;
+        }
+        if (!Objects.equals(this.occupation, other.occupation)) {
+            return false;
+        }
+        return true;
     }
 
 }

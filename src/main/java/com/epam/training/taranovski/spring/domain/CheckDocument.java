@@ -21,8 +21,7 @@ public class CheckDocument {
     private int checkDocumentId;
 
     /**
-     * @return 
-     * @pdOid ea6020d9-de20-45e2-bf4e-f5be387e61e6
+     * @return @pdOid ea6020d9-de20-45e2-bf4e-f5be387e61e6
      */
     public double getCommissions() {
         return commissions;
@@ -37,8 +36,7 @@ public class CheckDocument {
     }
 
     /**
-     * @return 
-     * @pdOid fdca3915-fa36-4213-a0ef-29c53dff25ec
+     * @return @pdOid fdca3915-fa36-4213-a0ef-29c53dff25ec
      */
     public int getCheckDocumentId() {
         return checkDocumentId;
@@ -50,6 +48,37 @@ public class CheckDocument {
      */
     public void setCheckDocumentId(int newCheckDocumentId) {
         checkDocumentId = newCheckDocumentId;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.commissions) ^ (Double.doubleToLongBits(this.commissions) >>> 32));
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CheckDocument other = (CheckDocument) obj;
+        if (Double.doubleToLongBits(this.commissions) != Double.doubleToLongBits(other.commissions)) {
+            return false;
+        }
+        return true;
     }
 
 }

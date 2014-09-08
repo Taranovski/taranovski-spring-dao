@@ -1,12 +1,10 @@
 package com.epam.training.taranovski.spring.domain;
 
-
 /**
  * *********************************************************************
  * Module: Skill.java Author: Alyx Purpose: Defines the Class Skill
- **********************************************************************
+ * *********************************************************************
  */
-
 import java.util.*;
 
 /**
@@ -89,6 +87,41 @@ public class Skill {
      */
     public void setSkillId(int newSkillId) {
         skillId = newSkillId;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.skillName);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Skill other = (Skill) obj;
+        if (!Objects.equals(this.skillName, other.skillName)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -1,12 +1,10 @@
 package com.epam.training.taranovski.spring.domain;
 
-
 /**
  * *********************************************************************
  * Module: Employer.java Author: Alyx Purpose: Defines the Class Employer
- **********************************************************************
+ * *********************************************************************
  */
-
 import java.util.*;
 
 /**
@@ -47,6 +45,7 @@ public class Employer {
     public java.util.Collection<CheckDocument> checkDocument;
 
     /**
+     * @return 
      * @pdOid 642741c9-5eb9-429d-ac56-6b8b4b59c126
      */
     public java.lang.String getCompanyName() {
@@ -62,6 +61,7 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdOid cfe41047-75f1-41a8-a299-16aa73c3a418
      */
     public java.lang.String getField() {
@@ -77,6 +77,7 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdOid 4fd75693-caa8-499c-8d8b-1f8c8669d69a
      */
     public java.lang.String getAdress() {
@@ -92,6 +93,7 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdOid f6396051-dbe9-43a9-92f7-19e0c38635fc
      */
     public double getTelephoneNumber() {
@@ -107,6 +109,7 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdOid 3c89dad2-36e5-413c-b9d9-2a56a944c864
      */
     public int getEmployerId() {
@@ -122,21 +125,23 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdGenerated default getter
      */
     public java.util.Collection<Vacancy> getVacancy() {
         if (vacancy == null) {
-            vacancy = new java.util.HashSet<Vacancy>();
+            vacancy = new java.util.HashSet<>();
         }
         return vacancy;
     }
 
     /**
-     * @pdGenerated default iterator getter
+     * @pdGene
+     * @return rated default iterator getter
      */
     public java.util.Iterator getIteratorVacancy() {
         if (vacancy == null) {
-            vacancy = new java.util.HashSet<Vacancy>();
+            vacancy = new java.util.HashSet<>();
         }
         return vacancy.iterator();
     }
@@ -161,7 +166,7 @@ public class Employer {
             return;
         }
         if (this.vacancy == null) {
-            this.vacancy = new java.util.HashSet<Vacancy>();
+            this.vacancy = new java.util.HashSet<>();
         }
         if (!this.vacancy.contains(newVacancy)) {
             this.vacancy.add(newVacancy);
@@ -193,21 +198,24 @@ public class Employer {
     }
 
     /**
+     * @return 
      * @pdGenerated default getter
      */
     public java.util.Collection<CheckDocument> getCheckDocument() {
         if (checkDocument == null) {
-            checkDocument = new java.util.HashSet<CheckDocument>();
+            checkDocument = new java.util.HashSet<>();
         }
         return checkDocument;
     }
 
     /**
-     * @pdGenerated default iterator getter
+     * @pdGenerated
+     * @return default iterator getter
      */
+    
     public java.util.Iterator getIteratorCheckDocument() {
         if (checkDocument == null) {
-            checkDocument = new java.util.HashSet<CheckDocument>();
+            checkDocument = new java.util.HashSet<>();
         }
         return checkDocument.iterator();
     }
@@ -232,7 +240,7 @@ public class Employer {
             return;
         }
         if (this.checkDocument == null) {
-            this.checkDocument = new java.util.HashSet<CheckDocument>();
+            this.checkDocument = new java.util.HashSet<>();
         }
         if (!this.checkDocument.contains(newCheckDocument)) {
             this.checkDocument.add(newCheckDocument);
@@ -261,6 +269,49 @@ public class Employer {
         if (checkDocument != null) {
             checkDocument.clear();
         }
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.companyName);
+        hash = 97 * hash + Objects.hashCode(this.field);
+        hash = 97 * hash + Objects.hashCode(this.adress);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.telephoneNumber) ^ (Double.doubleToLongBits(this.telephoneNumber) >>> 32));
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employer other = (Employer) obj;
+        if (!Objects.equals(this.companyName, other.companyName)) {
+            return false;
+        }
+        if (!Objects.equals(this.field, other.field)) {
+            return false;
+        }
+        if (!Objects.equals(this.adress, other.adress)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.telephoneNumber) != Double.doubleToLongBits(other.telephoneNumber)) {
+            return false;
+        }
+        return true;
     }
 
 }

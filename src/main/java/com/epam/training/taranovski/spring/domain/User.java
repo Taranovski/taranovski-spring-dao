@@ -1,12 +1,10 @@
 package com.epam.training.taranovski.spring.domain;
 
-
 /**
  * *********************************************************************
  * Module: User.java Author: Alyx Purpose: Defines the Class User
- **********************************************************************
+ * *********************************************************************
  */
-
 import java.util.*;
 
 /**
@@ -108,6 +106,45 @@ public class User {
      */
     public void setUserId(int newUserId) {
         userId = newUserId;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.login);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + Objects.hashCode(this.type);
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        return true;
     }
 
 }
