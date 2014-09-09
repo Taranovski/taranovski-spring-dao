@@ -7,8 +7,15 @@ package com.epam.training.taranovski.spring.repository.oracle;
 
 import com.epam.training.taranovski.spring.domain.Admin;
 import com.epam.training.taranovski.spring.repository.AdminRepository;
+import com.epam.training.taranovski.spring.repository.util.DAOUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 import javax.sql.DataSource;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +44,33 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public Admin getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "select * from \"Admin\" where \"adminId\" = ?"
+            );
+            preparedStatement.setInt(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+            Admin admin = null;
+            if (resultSet.next()) {
+                admin = new Admin();
+                admin.setName(resultSet.getString("name"));
+                admin.setAdminId(resultSet.getInt("adminId"));
+            }
+
+            return admin;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(resultSet);
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return null;
     }
 
     /**
@@ -46,7 +79,34 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public List<Admin> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "select * from \"Admin\""
+            );
+
+            resultSet = preparedStatement.executeQuery();
+            List<Admin> list = new LinkedList<>();
+            Admin admin = null;
+            if (resultSet.next()) {
+                admin = new Admin();
+                admin.setName(resultSet.getString("name"));
+                admin.setAdminId(resultSet.getInt("adminId"));
+                list.add(admin);
+            }
+
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(resultSet);
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return null;
     }
 
     /**
@@ -56,7 +116,33 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public Admin getByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "select * from \"Admin\" where name = ?"
+            );
+            preparedStatement.setString(1, name);
+
+            resultSet = preparedStatement.executeQuery();
+            Admin admin = null;
+            if (resultSet.next()) {
+                admin = new Admin();
+                admin.setName(resultSet.getString("name"));
+                admin.setAdminId(resultSet.getInt("adminId"));
+            }
+
+            return admin;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(resultSet);
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return null;
     }
 
     /**
@@ -66,7 +152,21 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public boolean create(Admin admin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("insert into ");
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return false;
     }
 
     /**
@@ -76,7 +176,21 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public boolean update(Admin admin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("");
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return false;
     }
 
     /**
@@ -86,7 +200,21 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public boolean delete(Admin admin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("");
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+        } finally {
+            DAOUtil.close(preparedStatement);
+            DAOUtil.close(connection);
+        }
+        return false;
     }
 
 }
