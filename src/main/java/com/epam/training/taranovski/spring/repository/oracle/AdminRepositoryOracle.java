@@ -14,7 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,15 +28,15 @@ import org.springframework.stereotype.Repository;
 @Repository("adminRepository")
 public class AdminRepositoryOracle implements AdminRepository {
 
-    private DataSource ds;
+    private EntityManagerFactory emf;
 
     /**
      *
-     * @param ds
+     * @param emf
      */
     @Autowired
-    public AdminRepositoryOracle(DataSource ds) {
-        this.ds = ds;
+    public AdminRepositoryOracle(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     /**
@@ -44,33 +46,20 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public Admin getById(int id) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        EntityManager em = emf.createEntityManager();
+        Admin admin;
         try {
-            connection = ds.getConnection();
-            preparedStatement = connection.prepareStatement(
-                    "select * from \"Admin\" where \"adminId\" = ?"
-            );
-            preparedStatement.setInt(1, id);
-
-            resultSet = preparedStatement.executeQuery();
-            Admin admin = null;
-            if (resultSet.next()) {
-                admin = new Admin();
-                admin.setName(resultSet.getString("name"));
-                admin.setAdminId(resultSet.getInt("adminId"));
-            }
-
-            return admin;
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
+            em.getTransaction().begin();
+            admin = em.find(Admin.class, id);
+            em.getTransaction().commit();
         } finally {
-            DAOUtil.close(resultSet);
-            DAOUtil.close(preparedStatement);
-            DAOUtil.close(connection);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            em.close();
         }
-        return null;
+
+        return admin;
     }
 
     /**
@@ -79,34 +68,8 @@ public class AdminRepositoryOracle implements AdminRepository {
      */
     @Override
     public List<Admin> getAll() {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = ds.getConnection();
-            preparedStatement = connection.prepareStatement(
-                    "select * from \"Admin\""
-            );
-
-            resultSet = preparedStatement.executeQuery();
-            List<Admin> list = new LinkedList<>();
-            Admin admin = null;
-            if (resultSet.next()) {
-                admin = new Admin();
-                admin.setName(resultSet.getString("name"));
-                admin.setAdminId(resultSet.getInt("adminId"));
-                list.add(admin);
-            }
-
-            return list;
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminRepositoryOracle.class.getName()).error(ex);
-        } finally {
-            DAOUtil.close(resultSet);
-            DAOUtil.close(preparedStatement);
-            DAOUtil.close(connection);
-        }
-        return null;
+        Query q = emf.createEntityManager().createNamedQuery("Admin.findAll", Admin.class);
+        return q.getResultList();
     }
 
     /**
