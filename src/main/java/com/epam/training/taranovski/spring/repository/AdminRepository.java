@@ -5,7 +5,7 @@
  */
 package com.epam.training.taranovski.spring.repository;
 
-import com.epam.training.taranovski.spring.domain.Admin;
+import com.epam.training.taranovski.spring.domain1.Admin;
 
 /**
  *

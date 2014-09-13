@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
  * @author Alyx
  */
 @Entity
-@Table(name = "Skill", catalog = "", schema = "C##TARANOVSKI_USER")
+@Table(name = "Skill")
 @NamedQueries({
     @NamedQuery(name = "Skill.findAll", query = "SELECT s FROM Skill s"),
     @NamedQuery(name = "Skill.findBySkillName", query = "SELECT s FROM Skill s WHERE s.skillName = :skillName"),

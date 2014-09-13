@@ -7,8 +7,6 @@
 package com.epam.training.taranovski.spring.domain1;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -27,85 +25,85 @@ import javax.validation.constraints.Size;
  * @author Alyx
  */
 @Entity
-@Table(name = "User", catalog = "", schema = "C##TARANOVSKI_USER")
+@Table(name = "\"User\"")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByType", query = "SELECT u FROM User u WHERE u.type = :type"),
+    @NamedQuery(name = "User.findByUserLogin", query = "SELECT u FROM User u WHERE u.userLogin = :userLogin"),
+    @NamedQuery(name = "User.findByUserPassword", query = "SELECT u FROM User u WHERE u.userPassword = :userPassword"),
+    @NamedQuery(name = "User.findByUserType", query = "SELECT u FROM User u WHERE u.userType = :userType"),
     @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-    @NamedQuery(name = "User.findByTypeId", query = "SELECT u FROM User u WHERE u.typeId = :typeId")})
+    @NamedQuery(name = "User.findByUserTypeId", query = "SELECT u FROM User u WHERE u.userTypeId = :userTypeId")})
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Size(max = 25)
-    @Column(name = "login")
-    private String login;
+    @Column(name = "USER_LOGIN")
+    private String userLogin;
     @Size(max = 25)
-    @Column(name = "password")
-    private String password;
+    @Column(name = "USER_PASSWORD")
+    private String userPassword;
     @Size(max = 25)
-    @Column(name = "type")
-    private String type;
+    @Column(name = "USER_TYPE")
+    private String userType;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "userId")
-    private BigDecimal userId;
-    @Column(name = "typeId")
-    private BigInteger typeId;
+    @Column(name = "USER_ID")
+    private Integer userId;
+    @Column(name = "USER_TYPE_ID")
+    private Integer userTypeId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Employer> employerCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Employee> employeeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "adminUserId")
     private Collection<Admin> adminCollection;
 
     public User() {
     }
 
-    public User(BigDecimal userId) {
+    public User(Integer userId) {
         this.userId = userId;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getType() {
-        return type;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
-    public BigDecimal getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(BigDecimal userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public BigInteger getTypeId() {
-        return typeId;
+    public Integer getUserTypeId() {
+        return userTypeId;
     }
 
-    public void setTypeId(BigInteger typeId) {
-        this.typeId = typeId;
+    public void setUserTyprId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
     }
 
     public Collection<Employer> getEmployerCollection() {

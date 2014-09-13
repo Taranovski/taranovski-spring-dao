@@ -5,18 +5,18 @@
  */
 package com.epam.training.taranovski.spring.repository.oracle;
 
-import com.epam.training.taranovski.spring.domain.Admin;
+import com.epam.training.taranovski.spring.domain1.Admin;
 import com.epam.training.taranovski.spring.repository.AdminRepository;
 import com.epam.training.taranovski.spring.repository.util.DAOUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +28,7 @@ import org.springframework.stereotype.Repository;
 @Repository("adminRepository")
 public class AdminRepositoryOracle implements AdminRepository {
 
+    private DataSource ds;
     private EntityManagerFactory emf;
 
     /**
@@ -93,8 +94,8 @@ public class AdminRepositoryOracle implements AdminRepository {
             Admin admin = null;
             if (resultSet.next()) {
                 admin = new Admin();
-                admin.setName(resultSet.getString("name"));
-                admin.setAdminId(resultSet.getInt("adminId"));
+                admin.setAdminName(resultSet.getString("name"));
+                //admin.setAdminId(resultSet.getInt("adminId"));
             }
 
             return admin;

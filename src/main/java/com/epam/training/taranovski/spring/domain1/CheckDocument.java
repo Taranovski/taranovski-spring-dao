@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
  * @author Alyx
  */
 @Entity
-@Table(name = "CheckDocument", catalog = "", schema = "C##TARANOVSKI_USER")
+@Table(name = "CheckDocument")
 @NamedQueries({
     @NamedQuery(name = "CheckDocument.findAll", query = "SELECT c FROM CheckDocument c"),
     @NamedQuery(name = "CheckDocument.findByCommissions", query = "SELECT c FROM CheckDocument c WHERE c.commissions = :commissions"),

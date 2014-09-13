@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
  * @author Alyx
  */
 @Entity
-@Table(name = "Employee", catalog = "", schema = "C##TARANOVSKI_USER")
+@Table(name = "Employee")
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
     @NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.name = :name"),
@@ -61,7 +61,7 @@ public class Employee implements Serializable {
     private BigDecimal employeeId;
     @OneToMany(mappedBy = "employeeId")
     private Collection<Skill> skillCollection;
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @JoinColumn(name = "userId", referencedColumnName = "USER_ID")
     @ManyToOne(optional = false)
     private User userId;
     @JoinColumn(name = "checkDocumentId", referencedColumnName = "checkDocumentId")

@@ -7,7 +7,6 @@
 package com.epam.training.taranovski.spring.domain1;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,55 +24,55 @@ import javax.validation.constraints.Size;
  * @author Alyx
  */
 @Entity
-@Table(name = "Admin", catalog = "", schema = "C##TARANOVSKI_USER")
+@Table(name = "\"Admin\"")
 @NamedQueries({
     @NamedQuery(name = "Admin.findAll", query = "SELECT a FROM Admin a"),
-    @NamedQuery(name = "Admin.findByName", query = "SELECT a FROM Admin a WHERE a.name = :name"),
+    @NamedQuery(name = "Admin.findByAdminName", query = "SELECT a FROM Admin a WHERE a.adminName = :adminName"),
     @NamedQuery(name = "Admin.findByAdminId", query = "SELECT a FROM Admin a WHERE a.adminId = :adminId")})
 public class Admin implements Serializable {
     private static final long serialVersionUID = 1L;
     @Size(max = 50)
-    @Column(name = "name")
-    private String name;
+    @Column(name = "ADMIN_NAME")
+    private String adminName;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "adminId")
-    private BigDecimal adminId;
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @Column(name = "ADMIN_ID")
+    private Integer adminId;
+    @JoinColumn(name = "ADMIN_USER_ID", referencedColumnName = "USER_ID")
     @ManyToOne(optional = false)
-    private User userId;
+    private User adminUserId;
 
     public Admin() {
     }
 
-    public Admin(BigDecimal adminId) {
+    public Admin(Integer adminId) {
         this.adminId = adminId;
     }
 
-    public String getName() {
-        return name;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
-    public BigDecimal getAdminId() {
+    public Integer getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(BigDecimal adminId) {
+    public void setAdminId(Integer adminId) {
         this.adminId = adminId;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getAdminUserId() {
+        return adminUserId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setAdminUserId(User adminUserId) {
+        this.adminUserId = adminUserId;
     }
 
     @Override
