@@ -1,0 +1,1 @@
+dao for web project with spring usage
